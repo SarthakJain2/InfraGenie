@@ -1,0 +1,13 @@
+{
+    "Name": "InfraGenie",
+    "TenantId": "3ac1585b-156d-4c6e-8ffa-8b8440611f7d",
+    "ClientId": "bc3703b6-e592-4140-aaaf-d166236ed64c",
+    "ClientSecret" : "18.8Q~h_fXnX6jTKmblppds4zsQabfw1gtOmOcpn",
+    "Resource": "https://api.partner.microsoft.com",
+    "ModuleName": "Property",
+    "FileName":"ama-helloworlds.zip",
+    "FileName_216x216":"Genie_ai_216x216.png",
+    "FileName_215x115":"Genie_ai_215x115.png",
+    "FileName_90x90":"Genie_ai_90x90.png",
+    "FileName_48x48":"Genie_ai_48x48.png"  
+}

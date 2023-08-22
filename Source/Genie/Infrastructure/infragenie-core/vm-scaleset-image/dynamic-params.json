@@ -1,0 +1,74 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "env": {
+      "value": "sbx"
+    },
+    "projectName": {
+      "value": "Vmssnp"
+    },
+    "coreTags": {
+      "value": {
+        "project-name": "agtVmss",
+        "technical-contact": "Sukhvir Kaur <sukhvir@rhipheus.com>",
+        "billing-contact": "Vyas Bharghava <vyas@rhipheus.com>",
+        "purpose": "Image for Agent Virtual Machine Scaleset Creation for Sandbox",
+        "created-by": "Sukhvir Kaur <sukhvir@rhipheus.cloud>"
+      }
+    },
+    "galleryVmName": {
+      "value": ""
+    },
+    "galleryVmRG": {
+      "value": ""
+    },
+    "galleryVmType": {
+      "value": "Windows"
+    },
+    "galleryVmSku": {
+      "value": {
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2022-Datacenter",
+        "offer": "WindowsServer"
+      }
+    },
+    "imageReferenceId": {
+      "value": "/subscriptions/0040c20d-9fbe-42ac-b3f9-f83269a753d1/resourceGroups/rg-core-sbx-eastus-001/providers/Microsoft.Compute/galleries/gal_core_sbx_065/images/gal_def_core_sbx_065/versions/1.0.0"
+    },
+    "adminUsername": {
+      "value": "agtVmssAdmin"
+    },
+    "adminPassword": {
+      "value": "Say 'Hello' to Spock~122"
+    },
+    "existingNetworkId": {
+      "value": "/subscriptions/0040c20d-9fbe-42ac-b3f9-f83269a753d1/resourceGroups/rg-core-sbx-eastus-007/providers/Microsoft.Network/virtualNetworks/vnet-core-sbx-007"
+    },
+    "dnsZoneResourceGroupId": {
+      "value": ""
+    },
+    "shouldAllowPublicAccess": {
+      "value": false
+    },
+    "shouldCreateSubnets": {
+      "value": false
+    },
+    "shouldCreateDnsZones": {
+      "value": true
+    },
+    "existingSubnets": {
+      "value": [
+        "primary",
+        "secondary",
+        "APIManagementSubnet",
+        "ApplicationGatewaySubnet",
+        "AzureBastionSubnet",
+        "AzureCognitiveServicesSubnet",
+        "AzureFirewallSubnet",
+        "AzureContainerAppsSubnet",
+        "reserved"
+      ]
+    }
+  }
+}

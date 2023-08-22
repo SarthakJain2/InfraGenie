@@ -1,0 +1,25 @@
+{
+  "ai": {
+    "path": "https://exampleUrl/ai"
+  },
+  "feeds": [
+    {
+      "name": "InfraGenie",
+      "path": "https://pkgs.dev.azure.com/rhipheus/_packaging/InfraGenie/nuget/v3/index.json",
+      "packages": [
+        {
+          "name": "infra",
+          "path": "https://pkgs.dev.azure.com/rhipheus/_apis/packaging/feeds/InfraGenie/nuget/packages/Rhipheus.InfraGenie.Infra/Versions/1.0.0-CI-20230723-133035/content?api-version=7.0-preview.1"
+        },
+        {
+          "name": "golden",
+          "path": "https://pkgs.dev.azure.com/rhipheus/_apis/packaging/feeds/InfraGenie/nuget/packages/Rhipheus.InfraGenie.Golden/Versions/1.0.0-CI-20230723-133254/content?api-version=7.0-preview.1"
+        },
+        {
+          "name": "tools",
+          "path": "https://pkgs.dev.azure.com/rhipheus/_apis/packaging/feeds/InfraGenie/nuget/packages/Rhipheus.InfraGenie.Tools/Versions/1.0.0-CI-20230727-054940/content?api-version=7.0-preview.1"
+        }
+      ]
+    }
+  ]
+}

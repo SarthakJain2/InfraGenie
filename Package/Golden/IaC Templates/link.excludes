@@ -1,0 +1,7 @@
+link.excludes
+nuke.sh
+run.sh
+**.parameters.json
+**.debug.bicep
+*.yaml
+*.yml

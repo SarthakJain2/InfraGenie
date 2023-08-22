@@ -1,0 +1,57 @@
+resources:
+  pipelines:
+    - pipeline: genie-ci-infra-nuget
+      source: genie-ci-infra-nuget
+trigger: none
+
+stages:
+- stage: Build
+
+  jobs:
+  - job: Job_1
+    displayName: copy files for marketplace
+    pool:
+      vmImage: windows-latest
+      # name: Akshay's Laptop
+    steps:
+    - checkout: self
+      fetchDepth: 1
+    - task: DownloadPipelineArtifact@2
+      inputs:
+        buildType: 'specific'
+        project: 'efafcb65-a45c-4d5c-a58f-35ec3de2ebb5'
+        definition: '20'
+        buildVersionToDownload: 'latest'
+        allowPartiallySucceededBuilds: true
+        targetPath: '$(System.ArtifactsDirectory)'
+    - task: CopyFiles@2
+      displayName: 'Copy Files to: '
+      inputs:
+        SourceFolder: $(System.ArtifactsDirectory)/drop
+        Contents: marketplace.json
+        TargetFolder: $(System.ArtifactsDirectory)/infra
+    - task: CopyFiles@2
+      displayName: 'Copy Files to:'
+      inputs:
+        SourceFolder: $(System.ArtifactsDirectory)/drop
+        Contents: createUiDefinition.json
+        TargetFolder: $(System.ArtifactsDirectory)/infra/build
+    - task: PowerShell@2
+      displayName: PowerShell Script
+      inputs:
+        targetType: inline
+        script: >
+          Write-Host "$(System.ArtifactsDirectory)"
+          Move-Item -Path "$(System.ArtifactsDirectory)/infra/marketplace.json" -Destination "$(System.ArtifactsDirectory)/infra/build/mainTemplate.json" -Force
+    - task: ArchiveFiles@2
+      displayName: Archive $(System.ArtifactsDirectory)/Infra/build
+      inputs:
+        rootFolderOrFile: $(System.ArtifactsDirectory)/Infra/build
+        includeRootFolder: false
+        archiveFile: $(System.ArtifactsDirectory)/Infra/build/marketplace.zip
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: marketplace'
+      inputs:
+        PathtoPublish: $(System.ArtifactsDirectory)/Infra/build/marketplace.zip
+        ArtifactName: marketplace
+...

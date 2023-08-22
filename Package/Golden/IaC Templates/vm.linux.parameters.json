@@ -1,0 +1,67 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "env": {
+            "value": "dev"
+        },
+        "location": {
+            "value": "eastus"
+        },
+        "component": {
+            "value": "lnx"
+        },
+        "nameSuffix": {
+            "value": "poc-lnx-dev-001"
+        },
+        "nameSuffixShort": {
+            "value": "poc-dev-001"
+        },
+        "computerName": {
+            "value": "poc-lnx-dev"
+        },
+        "nameOverride": {
+            "value": ""
+        },
+        "vmImagePublisher": {
+            "value": "OpenLogic"
+        },
+        "vmImageOffer": {
+            "value": "CentOS"
+        },
+        "vmImageSku": {
+            "value": "8_5-gen2"
+        },
+        "vnetAddressPrefixes": {
+            "value": [
+                "10.2.0.0/16"
+            ]
+        },
+        "subnetAddressPrefix": {
+            "value": {
+                "name": "default",
+                "addressPrefix": "10.2.0.0/24"
+            }
+        },
+        "adminUsername": {
+            "value": "pocadmin"
+        },
+        "adminPassword": {
+            "value": "HelloSpock@123"
+        },
+        "commandToExecute": {
+            "value": "bash --version"
+        },
+        "coreTags": {
+            "value": {
+                "created-by": "Vyas Bharghava",
+                "created-on": "8/31/2022",
+                "purpose": "Generic Linux Server",
+                "technical-contact": "Vyas Bhargahva <vyas@rhipheus.com>",
+                "project-name": "poc",
+                "environment": "dev",
+                "billing-contact": "Vyas Bharghava <vyas@rhipheus.com>"
+            }
+        }
+    }
+}

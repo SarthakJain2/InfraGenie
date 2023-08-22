@@ -1,0 +1,107 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "env": {
+      "value": "dev"
+    },
+    "vnetAddressPrefixes": {
+      "value": [
+        "10.205.0.0/16"
+      ]
+    },
+    "subnetAddressPrefixes": {
+      "value": [
+        {
+            "name": "primary",
+            "addressPrefix": "10.205.0.0/17"
+        },
+        {
+            "name": "secondary",
+            "addressPrefix": "10.205.128.0/18"
+        },
+        {
+            "name": "AzureContainerAppsSubnet",
+            "addressPrefix": "10.205.220.0/23",
+            "nsgId": ""
+        },
+        {
+            "name": "APIManagementSubnet",
+            "addressPrefix": "10.205.232.0/24"
+        },
+        {
+            "name": "ApplicationGatewaySubnet",
+            "addressPrefix": "10.205.233.0/24",
+            "nsgId": ""
+        },
+        {
+            "name": "AzureBastionSubnet",
+            "addressPrefix": "10.205.234.0/24",
+            "nsgId": ""
+        },
+        {
+            "name": "AzureCognitiveServicesSubnet",
+            "addressPrefix": "10.205.235.0/24",
+            "serviceEndPoints": [
+                "Microsoft.CognitiveServices"
+            ]
+        },
+        {
+            "name": "AzureFunctionsSubnet",
+            "addressPrefix": "10.205.236.0/24",
+            "serviceEndPoints": [
+                "Microsoft.Web"
+            ]
+        },
+        {
+            "name": "AzureFirewallSubnet",
+            "addressPrefix": "10.205.243.0/26",
+            "nsgId": ""
+        },
+        {
+            "name": "AppServiceSubnet",
+            "addressPrefix": "10.205.243.64/26",
+            "serviceEndPoints": [
+                "Microsoft.Web"
+            ],
+            "delegations": [
+                "Microsoft.Web/serverfarms"
+            ]
+        },
+        {
+            "name": "reserved",
+            "addressPrefix": "10.205.248.0/21"
+        }
+    ]
+    },
+    "existingSubnets": {
+      "value": [
+        "primary",
+        "secondary",
+        "AzureContainerAppsSubnet",
+        "APIManagementSubnet",
+        "ApplicationGatewaySubnet",
+        "AzureBastionSubnet",
+        "AzureCognitiveServicesSubnet",
+        "AzureFunctionsSubnet",
+        "AzureFirewallSubnet",
+        "AppServiceSubnet",
+        "reserved"
+      ]
+    },
+    "coreTags": {
+      "value": {
+        "created-by": "Vyas Bharghava",
+        "purpose": "Infragenie",
+        "env": "sbx",
+        "project-name": "genie"
+      }
+    },
+    "principalId": {
+      "value": ""
+    },
+    "imageReferenceId": {
+      "value": ""
+    }
+  }
+}

@@ -1,0 +1,130 @@
+
+variables:
+- name: BuildParameters.TestProjects
+  value: '**/*[Tt]ests/*.csproj'
+trigger:
+  paths:
+    include:
+    - Source/Genie/Core
+    
+    
+name: $(date:yyyyMMdd)$(rev:.r)
+jobs:
+- job: Job_1
+  displayName: Tools Integration pipeline 
+  pool:
+    vmImage: windows-latest
+  steps:
+  - checkout: self 
+    fetchDepth: 1
+  - task: DotNetCoreCLI@2
+    displayName: Restore
+    inputs:
+      command: restore
+      projects: '**/*.csproj'
+  - task: DotNetCoreCLI@2
+    displayName: Build
+    inputs:
+      projects: '**/*.csproj'
+      arguments: --configuration $(BuildConfiguration)
+      workingDirectory: Source/Genie/Core
+  - task: DotNetCoreCLI@2
+    displayName: Test
+    enabled: False
+    inputs:
+      command: test
+      projects: $(BuildParameters.TestProjects)
+      arguments: --configuration $(BuildConfiguration)
+  - task: DotNetCoreCLI@2
+    displayName: 'Publish '
+    inputs:
+      command: publish
+      publishWebProjects: false
+      projects: '**/*.csproj'
+      arguments: --configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)
+      zipAfterPublish: false
+  - task: PublishBuildArtifacts@1
+    displayName: Publish Artifact
+    condition: succeededOrFailed()
+    inputs:
+      PathtoPublish: $(Build.artifactstagingdirectory)
+      TargetPath: '\\my\share\$(Build.DefinitionName)\$(Build.BuildNumber)'
+- job: Job_2
+  displayName: docker creation 
+  pool:
+    vmImage: ubuntu-latest
+  steps:
+  - checkout: self
+    fetchDepth: 1
+  - task: Docker@2
+    displayName: Build & Push Genie Website
+    inputs:
+      containerRegistry: 0115954d-77ab-4b0a-a65d-c2c2f43bf04d
+      repository: genie-web
+      Dockerfile: Source/Genie/Core/Rhipheus.Genie.Web/Dockerfile
+      tags: latest
+  
+  - task: Docker@2
+    displayName: pull
+    inputs:
+      containerRegistry: 0115954d-77ab-4b0a-a65d-c2c2f43bf04d
+      command: pull
+      arguments: crgeniedev001.azurecr.io/genie-web:latest
+
+  - task: Docker@2
+    displayName: save
+    inputs:
+      repository: genie-web
+      command: save
+      arguments: --output $(build.artifactstagingdirectory)/genie-web.tar crgeniedev001.azurecr.io/genie-web:latest
+
+  
+  - task: Docker@2
+    displayName: Build & Push Genie API
+    inputs:
+      containerRegistry: 0115954d-77ab-4b0a-a65d-c2c2f43bf04d
+      repository: genie-api
+      Dockerfile: Source/Genie/Core/Rhipheus.Genie.Web.Api/Dockerfile
+      buildContext: Source/Genie/Core
+      tags: latest
+
+  - task: Docker@2
+    displayName: pull
+    inputs:
+      containerRegistry: 0115954d-77ab-4b0a-a65d-c2c2f43bf04d
+      command: pull
+      arguments: crgeniedev001.azurecr.io/genie-api:latest
+
+  - task: Docker@2
+    displayName: save
+    inputs:
+      repository: genie-api
+      command: save
+      arguments: --output $(build.artifactstagingdirectory)/genie-api.tar crgeniedev001.azurecr.io/genie-api:latest
+  - task: Docker@2
+    displayName: Build & Push Genie CLI
+    inputs:
+      containerRegistry: 0115954d-77ab-4b0a-a65d-c2c2f43bf04d
+      repository: genie-cli
+      Dockerfile: Source/Genie/Core/Rhipheus.Genie.Cli/Dockerfile
+      buildContext: Source/Genie/Core
+      tags: latest
+
+  - task: Docker@2
+    displayName: pull
+    inputs:
+      containerRegistry: 0115954d-77ab-4b0a-a65d-c2c2f43bf04d
+      command: pull
+      arguments: crgeniedev001.azurecr.io/genie-cli:latest
+
+  - task: Docker@2
+    displayName: save
+    inputs:
+      repository: genie-cli
+      command: save
+      arguments: --output $(build.artifactstagingdirectory)/genie-cli.tar crgeniedev001.azurecr.io/genie-cli:latest
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+    inputs:
+      PathtoPublish: '$(build.artifactstagingdirectory)'
+...

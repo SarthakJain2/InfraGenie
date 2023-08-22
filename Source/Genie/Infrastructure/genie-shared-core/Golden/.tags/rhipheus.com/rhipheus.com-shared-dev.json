@@ -1,0 +1,14 @@
+{
+    "env": "dev",
+    "projectName": "shared",
+    "coreTags": {
+        "project-name": "shared",
+        "env": "dev"
+    },
+    "imageReferenceId": "/subscriptions/ece96d80-c934-4839-bb90-c2f9ff7c94f9/resourceGroups/rg-core-dev-eastus-002/providers/Microsoft.Compute/galleries/gal_core_dev_002/images/gal_def_core_dev_002/versions/1.0.0",
+    "existingNetworkId": "",
+    "dnsZones": [     
+        "privatelink.vaultcore.azure.net",
+        "privatelink.blob.core.windows.net"
+    ]
+}

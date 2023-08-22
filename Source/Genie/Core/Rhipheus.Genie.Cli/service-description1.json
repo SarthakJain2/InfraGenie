@@ -1,0 +1,1239 @@
+[
+  {
+    "Name": "acr-user-assigned",
+    "Description": "acr-user-assigned",
+    "Template": "acr-user-assigned.bicep",
+    "Icon": "acr-user-assigned.svg",
+    "Label": "acr-user-assigned",
+    "Prefix": "acr",
+    "Defaults": {
+      "Sku": "Standard",
+      "AdminUserEnabled": false,
+      "NetworkAccess": "Enabled"
+    },
+    "EnvSpecific": {
+      "Dev": {
+        "Name": "devacr",
+        "ResourceGroup": "devresourcegroup",
+        "Location": "westus"
+      },
+      "Prod": {
+        "Name": "prodacr",
+        "ResourceGroup": "prodresourcegroup",
+        "Location": "eastus"
+      }
+    }
+  },
+  {
+    "Name": "active-directory-b2c",
+    "Description": "active-directory-b2c",
+    "Template": "active-directory-b2c.bicep",
+    "Icon": "active-directory-b2c.svg",
+    "Label": "active-directory-b2c",
+    "Prefix": "adb2c",
+    "Defaults": {
+      "SignInPolicy": "B2C_1_SignIn",
+      "SignUpPolicy": "B2C_1_SignUp",
+      "PasswordResetPolicy": "B2C_1_PasswordReset"
+    },
+    "EnvSpecific": {
+      "Dev": {
+        "Name": "devadb2c",
+        "ResourceGroup": "devresourcegroup",
+        "Location": "westus"
+      },
+      "Prod": {
+        "Name": "prodadb2c",
+        "ResourceGroup": "prodresourcegroup",
+        "Location": "eastus"
+      }
+    }
+  },
+  {
+    "Name": "active-directory-ds",
+    "Description": "active-directory-ds",
+    "Template": "active-directory-ds.bicep",
+    "Icon": "active-directory-ds.svg",
+    "Label": "active-directory-ds",
+    "Prefix": "adds",
+    "Defaults": {
+      "DomainName": "mydomain",
+      "NetBiosDomainName": "mydomain"
+    },
+    "EnvSpecific": {
+      "Dev": {
+        "Name": "devadds",
+        "ResourceGroup": "devresourcegroup",
+        "Location": "westus"
+      },
+      "Prod": {
+        "Name": "prodadds",
+        "ResourceGroup": "prodresourcegroup",
+        "Location": "eastus"
+      }
+    }
+  },
+  {
+    "Name": "add-to-vault",
+    "Description": "add-to-vault",
+    "Template": "add-to-vault.bicep",
+    "Icon": "add-to-vault.svg",
+    "Label": "add-to-vault",
+    "Prefix": "atv",
+    "Defaults": {
+      "EnabledForDeployment": true,
+      "EnabledForDiskEncryption": true,
+      "EnabledForTemplateDeployment": true
+    },
+    "EnvSpecific": {
+      "Dev": {
+        "Name": "devkeyvault",
+        "ResourceGroup": "devresourcegroup",
+        "Location": "westus"
+      },
+      "Prod": {
+        "Name": "prodkeyvault",
+        "ResourceGroup": "prodresourcegroup",
+        "Location": "eastus"
+      }
+    }
+  },
+  {
+    "Name": "aks-base",
+    "Description": "aks-base",
+    "Template": "aks-base.bicep",
+    "Icon": "aks-base.svg",
+    "Label": "aks-base",
+    "Prefix": "aksb",
+    "Defaults": {
+      "KubernetesVersion": "1.20.7",
+      "DnsPrefix": "dnsPrefix",
+      "AgentPoolProfile": {
+        "Count": 3,
+        "VmSize": "Standard_DS2_v2"
+      }
+    },
+    "EnvSpecific": {
+      "Dev": {
+        "Name": "devakscluster",
+        "ResourceGroup": "devresourcegroup",
+        "Location": "westus"
+      },
+      "Prod": {
+        "Name": "prodakscluster",
+        "ResourceGroup": "prodresourcegroup",
+        "Location": "eastus"
+      }
+    }
+  },
+  {
+    "Name": "aks-network-contributor",
+    "Description": "allows the user/service principal to manage network resources that are needed for a Kubernetes cluster.",
+    "Template": "aks-network-contributor.bicep",
+    "Icon": "aks-network-contributor.svg",
+    "Label": "aks-network-contributor",
+    "Prefix": "aksnc",
+    "Defaults": {},
+    "EnvSpecific": {
+      "Dev": {
+        "UserOrPrincipalId": "dev-user-or-principal-id",
+        "ResourceGroup": "devresourcegroup",
+        "Role": "Network Contributor"
+      },
+      "Prod": {
+        "UserOrPrincipalId": "prod-user-or-principal-id",
+        "ResourceGroup": "prodresourcegroup",
+        "Role": "Network Contributor"
+      }
+    }
+  },
+  {
+    "Name": "aks-private-dns-contributor",
+    "Description": "used to grant the required permissions for an AKS cluster to interact with private DNS zones within the context of Azure Private DNS.",
+    "Template": "aks-private-dns-contributor.bicep",
+    "Icon": "aks-private-dns-contributor.svg",
+    "Label": "aks-private-dns-contributor",
+    "Prefix": "akspdc",
+    "Defaults": {},
+    "EnvSpecific": {
+      "Dev": {
+        "UserOrPrincipalId": "dev-user-or-principal-id",
+        "ResourceGroup": "devresourcegroup",
+        "Role": "Private DNS Zone Contributor"
+      },
+      "Prod": {
+        "UserOrPrincipalId": "prod-user-or-principal-id",
+        "ResourceGroup": "prodresourcegroup",
+        "Role": "Private DNS Zone Contributor"
+      }
+    }
+  },
+  {
+    "Name": "api-management-hostName",
+    "Description": " helps developers and companies to securely publish, manage, secure, and analyze APIs in a scalable manner",
+    "Template": "api-management-hostName.bicep",
+    "Icon": "api-management-hostName.svg",
+    "Label": "api-management-hostName",
+    "Prefix": "apimh",
+    "Defaults": {},
+    "EnvSpecific": {
+      "Dev": {
+        "ResourceGroup": "devresourcegroup",
+        "HostName": "dev-api.example.com"
+      },
+      "Prod": {
+        "ResourceGroup": "prodresourcegroup",
+        "HostName": "prod-api.example.com"
+      }
+    }
+  },
+  {
+    "Name": "api-management",
+    "Description": "allows you to publish, secure, transform, maintain, and monitor APIs. ",
+    "Template": "api-management.bicep",
+    "Icon": "api-management.svg",
+    "Label": "api-management",
+    "Prefix": "apim",
+    "Defaults": {
+      "PublisherName": "DefaultPublisher",
+      "PublisherEmail": "publisher@example.com",
+      "Sku": "Consumption"
+    },
+    "EnvSpecific": {
+      "Dev": {
+        "Name": "devapim",
+        "ResourceGroup": "devresourcegroup",
+        "Location": "westus"
+      },
+      "Prod": {
+        "Name": "prodapim",
+        "ResourceGroup": "prodresourcegroup",
+        "Location": "eastus"
+      }
+    }
+  },
+  {
+    "Name": "app-service-plan",
+    "Description": "represents the set of resources and features that Azure provides for hosting an App Service, such as web apps, APIs, or mobile app back ends. ",
+    "Template": "app-service-plan.bicep",
+    "Icon": "app-service-plan.svg",
+    "Label": "app-service-plan",
+    "Prefix": "asp",
+    "Defaults": {
+      "Sku": "S1",
+      "Kind": "Windows"
+    },
+    "EnvSpecific": {
+      "Dev": {
+        "Name": "devappserviceplan",
+        "ResourceGroup": "devresourcegroup",
+        "Location": "westus"
+      },
+      "Prod": {
+        "Name": "prodappserviceplan",
+        "ResourceGroup": "prodresourcegroup",
+        "Location": "eastus"
+      }
+    }
+  },
+  {
+    "Name": "app-service-web",
+    "Description": "It is a fully managed platform to build, deploy, and scale web apps.",
+    "Template": "app-service-web.bicep",
+    "Icon": "app-service-web.svg",
+    "Label": "app-service-web",
+    "Prefix": "asw",
+    "Defaults": {
+      "HttpsOnly": true,
+      "ClientAffinityEnabled": true
+    },
+    "EnvSpecific": {
+      "Dev": {
+        "Name": "devappserviceweb",
+        "ResourceGroup": "devresourcegroup",
+        "Location": "westus",
+        "AppServicePlanId": "/subscriptions/{subscriptionId}/resourceGroups/devresourcegroup/providers/Microsoft.Web/serverfarms/devappserviceplan"
+      },
+      "Prod": {
+        "Name": "prodappserviceweb",
+        "ResourceGroup": "prodresourcegroup",
+        "Location": "eastus",
+        "AppServicePlanId": "/subscriptions/{subscriptionId}/resourceGroups/prodresourcegroup/providers/Microsoft.Web/serverfarms/prodappserviceplan"
+      }
+    }
+  },
+  {
+    "Name": "app-service",
+    "Description": "It is a fully-managed service for hosting web apps, REST APIs, and mobile back ends.",
+    "Template": "app-service.bicep",
+    "Icon": "app-service.svg",
+    "Label": "app-service",
+    "Prefix": "as",
+    "Defaults": {
+      "HttpsOnly": true,
+      "ClientAffinityEnabled": true
+    },
+    "EnvSpecific": {
+      "Dev": {
+        "Name": "devappservice",
+        "ResourceGroup": "devresourcegroup",
+        "Location": "westus",
+        "AppServicePlanId": "/subscriptions/{subscriptionId}/resourceGroups/devresourcegroup/providers/Microsoft.Web/serverfarms/devappserviceplan"
+      },
+      "Prod": {
+        "Name": "prodappservice",
+        "ResourceGroup": "prodresourcegroup",
+        "Location": "eastus",
+        "AppServicePlanId": "/subscriptions/{subscriptionId}/resourceGroups/prodresourcegroup/providers/Microsoft.Web/serverfarms/prodappserviceplan"
+      }
+    }
+  },
+  {
+    "Name": "application-gateway",
+    "Description": "It is a web traffic load balancer that enables you to manage traffic to your web applications",
+    "Template": "application-gateway.bicep",
+    "Icon": "application-gateway.svg",
+    "Label": "application-gateway",
+    "Prefix": "ag",
+    "Defaults": {
+      "Sku": {
+        "name": "Standard_v2",
+        "tier": "Standard_v2"
+      },
+      "GatewayIPConfigurations": [
+        {
+          "name": "appGatewayIpConfig",
+          "properties": {
+            "subnet": {
+              "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}"
+            }
+          }
+        }
+      ]
+    },
+    "EnvSpecific": {
+      "Dev": {
+        "Name": "devappgateway",
+        "ResourceGroup": "devresourcegroup",
+        "Location": "westus"
+      },
+      "Prod": {
+        "Name": "prodappgateway",
+        "ResourceGroup": "prodresourcegroup",
+        "Location": "eastus"
+      }
+    }
+  },
+  {
+    "Name": "application-insight",
+    "Description": "application-insight",
+    "Template": "application-insight.bicep",
+    "Icon": "application-insight.svg",
+    "Label": "application-insight",
+    "Prefix": "ai",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "b2c",
+    "Description": "b2c",
+    "Template": "b2c.bicep",
+    "Icon": "b2c.svg",
+    "Label": "b2c",
+    "Prefix": "b2c",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "bastion-host",
+    "Description": "bastion-host",
+    "Template": "bastion-host.bicep",
+    "Icon": "bastion-host.svg",
+    "Label": "bastion-host",
+    "Prefix": "bh",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "budget",
+    "Description": "budget",
+    "Template": "budget.bicep",
+    "Icon": "budget.svg",
+    "Label": "budget",
+    "Prefix": "bg",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "cognitive-services",
+    "Description": "cognitive-services",
+    "Template": "cognitive-services.bicep",
+    "Icon": "cognitive-services.svg",
+    "Label": "cognitive-services",
+    "Prefix": "cs",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "computer-vision",
+    "Description": "computer-vision",
+    "Template": "computer-vision.bicep",
+    "Icon": "computer-vision.svg",
+    "Label": "computer-vision",
+    "Prefix": "cv",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "container-apps",
+    "Description": "container-apps",
+    "Template": "container-apps.bicep",
+    "Icon": "container-apps.svg",
+    "Label": "container-apps",
+    "Prefix": "ca",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "container-registry",
+    "Description": "container-registry",
+    "Template": "container-registry.bicep",
+    "Icon": "container-registry.svg",
+    "Label": "container-registry",
+    "Prefix": "cr",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "contributoreRole",
+    "Description": "contributoreRole",
+    "Template": "contributoreRole.bicep",
+    "Icon": "contributoreRole.svg",
+    "Label": "contributoreRole",
+    "Prefix": "cr",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "core-vault",
+    "Description": "core-vault",
+    "Template": "core-vault.bicep",
+    "Icon": "core-vault.svg",
+    "Label": "core-vault",
+    "Prefix": "cv",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "coreVault-accessPolicy",
+    "Description": "coreVault-accessPolicy",
+    "Template": "coreVault-accessPolicy.bicep",
+    "Icon": "coreVault-accessPolicy.svg",
+    "Label": "coreVault-accessPolicy",
+    "Prefix": "cva",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "coreVault-certificate",
+    "Description": "coreVault-certificate",
+    "Template": "coreVault-certificate.bicep",
+    "Icon": "coreVault-certificate.svg",
+    "Label": "coreVault-certificate",
+    "Prefix": "cvc",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "corevault-role-assigned",
+    "Description": "corevault-role-assigned",
+    "Template": "corevault-role-assigned.bicep",
+    "Icon": "corevault-role-assigned.svg",
+    "Label": "corevault-role-assigned",
+    "Prefix": "cra",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "cosmos-db",
+    "Description": "cosmos-db",
+    "Template": "cosmos-db.bicep",
+    "Icon": "cosmos-db.svg",
+    "Label": "cosmos-db",
+    "Prefix": "cdb",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "data-factory",
+    "Description": "data-factory",
+    "Template": "data-factory.bicep",
+    "Icon": "data-factory.svg",
+    "Label": "data-factory",
+    "Prefix": "df",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "database",
+    "Description": "database",
+    "Template": "database.bicep",
+    "Icon": "database.svg",
+    "Label": "database",
+    "Prefix": "db",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "delay-deployment-script",
+    "Description": "delay-deployment-script",
+    "Template": "delay-deployment-script.bicep",
+    "Icon": "delay-deployment-script.svg",
+    "Label": "delay-deployment-script",
+    "Prefix": "dds",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "dns-zones-only",
+    "Description": "dns-zones-only",
+    "Template": "dns-zones-only.bicep",
+    "Icon": "dns-zones-only.svg",
+    "Label": "dns-zones-only",
+    "Prefix": "dzo",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "execute-script",
+    "Description": "execute-script",
+    "Template": "execute-script.bicep",
+    "Icon": "execute-script.svg",
+    "Label": "execute-script",
+    "Prefix": "es",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "front-door",
+    "Description": "front-door",
+    "Template": "front-door.bicep",
+    "Icon": "front-door.svg",
+    "Label": "front-door",
+    "Prefix": "fd",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "function-app",
+    "Description": " is a serverless compute service that enables you to run code on-demand without having to explicitly provision or manage infrastructure.",
+    "Template": "function-app.bicep",
+    "Icon": "function-app.svg",
+    "Label": "function-app",
+    "Prefix": "fa",
+    "Defaults": {
+      "RuntimeStack": "dotnet",
+      "HttpsOnly": true
+    },
+    "EnvSpecific": {
+      "Dev": {
+        "Name": "devfunctionapp",
+        "ResourceGroup": "devresourcegroup",
+        "Location": "westus",
+        "StorageAccountName": "devstorageaccount"
+      },
+      "Prod": {
+        "Name": "prodfunctionapp",
+        "ResourceGroup": "prodresourcegroup",
+        "Location": "eastus",
+        "StorageAccountName": "prodstorageaccount"
+      }
+    }
+  },
+  {
+    "Name": "get-image-os-state",
+    "Description": "get-image-os-state",
+    "Template": "get-image-os-state.bicep",
+    "Icon": "get-image-os-state.svg",
+    "Label": "get-image-os-state",
+    "Prefix": "gios",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "global",
+    "Description": "global",
+    "Template": "global.bicep",
+    "Icon": "global.svg",
+    "Label": "global",
+    "Prefix": "glb",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "hd-insight",
+    "Description": "hd-insight",
+    "Template": "hd-insight.bicep",
+    "Icon": "hd-insight.svg",
+    "Label": "hd-insight",
+    "Prefix": "hdi",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "image-gallery",
+    "Description": "image-gallery",
+    "Template": "image-gallery.bicep",
+    "Icon": "image-gallery.svg",
+    "Label": "image-gallery",
+    "Prefix": "ig",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "import-coreVaultCert-deploymentScript",
+    "Description": "import-coreVaultCert-deploymentScript",
+    "Template": "import-coreVaultCert-deploymentScript.bicep",
+    "Icon": "import-coreVaultCert-deploymentScript.svg",
+    "Label": "import-coreVaultCert-deploymentScript",
+    "Prefix": "icvcd",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "log-analytics-workspace",
+    "Description": "log-analytics-workspace",
+    "Template": "log-analytics-workspace.bicep",
+    "Icon": "log-analytics-workspace.svg",
+    "Label": "log-analytics-workspace",
+    "Prefix": "law",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "logic-app",
+    "Description": "logic-app",
+    "Template": "logic-app.bicep",
+    "Icon": "logic-app.svg",
+    "Label": "logic-app",
+    "Prefix": "la",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "managed-identity",
+    "Description": "managed-identity",
+    "Template": "managed-identity.bicep",
+    "Icon": "managed-identity.svg",
+    "Label": "managed-identity",
+    "Prefix": "mi",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "network-interface",
+    "Description": "network-interface",
+    "Template": "network-interface.bicep",
+    "Icon": "network-interface.svg",
+    "Label": "network-interface",
+    "Prefix": "ni",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "network",
+    "Description": "network",
+    "Template": "network.bicep",
+    "Icon": "network.svg",
+    "Label": "network",
+    "Prefix": "nw",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "nsg-api-management",
+    "Description": "nsg-api-management",
+    "Template": "nsg-api-management.bicep",
+    "Icon": "nsg-api-management.svg",
+    "Label": "nsg-api-management",
+    "Prefix": "nam",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "nsg-hdinsight",
+    "Description": "nsg-hdinsight",
+    "Template": "nsg-hdinsight.bicep",
+    "Icon": "nsg-hdinsight.svg",
+    "Label": "nsg-hdinsight",
+    "Prefix": "nhi",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "nsg",
+    "Description": "nsg",
+    "Template": "nsg.bicep",
+    "Icon": "nsg.svg",
+    "Label": "nsg",
+    "Prefix": "nsg",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "nsg.windows",
+    "Description": "nsg.windows",
+    "Template": "nsg.windows.bicep",
+    "Icon": "nsg.windows.svg",
+    "Label": "nsg.windows",
+    "Prefix": "nsgwin",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "openai",
+    "Description": "openai",
+    "Template": "openai.bicep",
+    "Icon": "openai.svg",
+    "Label": "openai",
+    "Prefix": "oai",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "prerequisites",
+    "Description": "prerequisites",
+    "Template": "prerequisites.bicep",
+    "Icon": "prerequisites.svg",
+    "Label": "prerequisites",
+    "Prefix": "pre",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "private-dns-zone-only",
+    "Description": "private-dns-zone-only",
+    "Template": "private-dns-zone-only.bicep",
+    "Icon": "private-dns-zone-only.svg",
+    "Label": "private-dns-zone-only",
+    "Prefix": "pdzo",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "private-dns-zone",
+    "Description": "private-dns-zone",
+    "Template": "private-dns-zone.bicep",
+    "Icon": "private-dns-zone.svg",
+    "Label": "private-dns-zone",
+    "Prefix": "pdz",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "private-end-point",
+    "Description": "private-end-point",
+    "Template": "private-end-point.bicep",
+    "Icon": "private-end-point.svg",
+    "Label": "private-end-point",
+    "Prefix": "pep",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "private-link",
+    "Description": "private-link",
+    "Template": "private-link.bicep",
+    "Icon": "private-link.svg",
+    "Label": "private-link",
+    "Prefix": "pl",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "private-LinkHub-Synapse",
+    "Description": "private-LinkHub-Synapse",
+    "Template": "private-LinkHub-Synapse.bicep",
+    "Icon": "private-LinkHub-Synapse.svg",
+    "Label": "private-LinkHub-Synapse",
+    "Prefix": "pls",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "public-ip-address",
+    "Description": "public-ip-address",
+    "Template": "public-ip-address.bicep",
+    "Icon": "public-ip-address.svg",
+    "Label": "public-ip-address",
+    "Prefix": "pia",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "resource-group",
+    "Description": "resource-group",
+    "Template": "resource-group.bicep",
+    "Icon": "resource-group.svg",
+    "Label": "resource-group",
+    "Prefix": "rg",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "resource-groups-two",
+    "Description": "resource-groups-two",
+    "Template": "resource-groups-two.bicep",
+    "Icon": "resource-groups-two.svg",
+    "Label": "resource-groups-two",
+    "Prefix": "rgt",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "service-bus",
+    "Description": "service-bus",
+    "Template": "service-bus.bicep",
+    "Icon": "service-bus.svg",
+    "Label": "service-bus",
+    "Prefix": "sb",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "sql",
+    "Description": "is a fully managed platform as a service (PaaS) database engine that handles most of the database management functions ",
+    "Template": "sql.bicep",
+    "Icon": "sql.svg",
+    "Label": "sql",
+    "Prefix": "sql",
+    "Defaults": {
+      "Version": "12.0",
+      "MinimalTlsVersion": "1.2"
+    },
+    "EnvSpecific": {
+      "Dev": {
+        "Name": "devsqlserver",
+        "ResourceGroup": "devresourcegroup",
+        "Location": "westus",
+        "AdministratorLogin": "devadmin",
+        "AdministratorLoginPassword": "DevPassword123!"
+      },
+      "Prod": {
+        "Name": "prodsqlserver",
+        "ResourceGroup": "prodresourcegroup",
+        "Location": "eastus",
+        "AdministratorLogin": "prodadmin",
+        "AdministratorLoginPassword": "ProdPassword123!"
+      }
+    }
+  },
+  {
+    "Name": "static-web-app",
+    "Description": "static-web-app",
+    "Template": "static-web-app.bicep",
+    "Icon": "static-web-app.svg",
+    "Label": "static-web-app",
+    "Prefix": "swa",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "storage-account",
+    "Description": "storage-account",
+    "Template": "storage-account.bicep",
+    "Icon": "storage-account.svg",
+    "Label": "storage-account",
+    "Prefix": "st",
+    "Defaults": {
+      "Sku": "Standard_LRS",
+      "Kind": "StorageV2",
+      "AccessTier": "Hot",
+      "AllowBlobPublicAccess": true
+    },
+    "EnvSpecific": {
+      "Dev": {
+        "Name": "devstorageaccount",
+        "ResourceGroup": "devresourcegroup",
+        "Location": "westus"
+      },
+      "Prod": {
+        "Name": "prodstorageaccount",
+        "ResourceGroup": "prodresourcegroup",
+        "Location": "eastus"
+      }
+    }
+  },
+  {
+    "Name": "storage-blob-container",
+    "Description": "storage-blob-container",
+    "Template": "storage-blob-container.bicep",
+    "Icon": "storage-blob-container.svg",
+    "Label": "storage-blob-container",
+    "Prefix": "stbc",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "storage-blob-role-assigned",
+    "Description": "storage-blob-role-assigned",
+    "Template": "storage-blob-role-assigned.bicep",
+    "Icon": "storage-blob-role-assigned.svg",
+    "Label": "storage-blob-role-assigned",
+    "Prefix": "st",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "storage-prerequisites",
+    "Description": "storage-prerequisites",
+    "Template": "storage-prerequisites.bicep",
+    "Icon": "storage-prerequisites.svg",
+    "Label": "storage-prerequisites",
+    "Prefix": "stpre",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "subnet-delegations",
+    "Description": "subnet-delegations",
+    "Template": "subnet-delegations.bicep",
+    "Icon": "subnet-delegations.svg",
+    "Label": "subnet-delegations",
+    "Prefix": "sd",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "subnetsCount.deploymentScript",
+    "Description": "subnetsCount.deploymentScript",
+    "Template": "subnetsCount.deploymentScript.bicep",
+    "Icon": "subnetsCount.deploymentScript.svg",
+    "Label": "subnetsCount.deploymentScript",
+    "Prefix": "scd",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "subnetsInfo",
+    "Description": "subnetsInfo",
+    "Template": "subnetsInfo.bicep",
+    "Icon": "subnetsInfo.svg",
+    "Label": "subnetsInfo",
+    "Prefix": "si",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "synapse-workspace",
+    "Description": "synapse-workspace",
+    "Template": "synapse-workspace.bicep",
+    "Icon": "synapse-workspace.svg",
+    "Label": "synapse-workspace",
+    "Prefix": "sw",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "tag-policy",
+    "Description": "tag-policy",
+    "Template": "tag-policy.bicep",
+    "Icon": "tag-policy.svg",
+    "Label": "tag-policy",
+    "Prefix": "tp",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "testConfig.debug",
+    "Description": "testConfig.debug",
+    "Template": "testConfig.debug.bicep",
+    "Icon": "testConfig.debug.svg",
+    "Label": "testConfig.debug",
+    "Prefix": "tcd",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "testIndex.debug",
+    "Description": "testIndex.debug",
+    "Template": "testIndex.debug.bicep",
+    "Icon": "testIndex.debug.svg",
+    "Label": "testIndex.debug",
+    "Prefix": "tid",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "uploadGateWayFile-deploymentScript",
+    "Description": "uploadGateWayFile-deploymentScript",
+    "Template": "uploadGateWayFile-deploymentScript.bicep",
+    "Icon": "uploadGateWayFile-deploymentScript.svg",
+    "Label": "uploadGateWayFile-deploymentScript",
+    "Prefix": "ud",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "vm.linux",
+    "Description": "vm.linux",
+    "Template": "vm.linux.bicep",
+    "Icon": "vm.linux.svg",
+    "Label": "vm.linux",
+    "Prefix": "vml",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "vm.windows",
+    "Description": "vm.windows",
+    "Template": "vm.windows.bicep",
+    "Icon": "vm.windows.svg",
+    "Label": "vm.windows",
+    "Prefix": "vmw",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "vm.windows.desktop",
+    "Description": "vm.windows.desktop",
+    "Template": "vm.windows.desktop.bicep",
+    "Icon": "vm.windows.desktop.svg",
+    "Label": "vm.windows.desktop",
+    "Prefix": "vmwd",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "vm.windows.ir",
+    "Description": "vm.windows.ir",
+    "Template": "vm.windows.ir.bicep",
+    "Icon": "vm.windows.ir.svg",
+    "Label": "vm.windows.ir",
+    "Prefix": "vmwir",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "vmss",
+    "Description": "vmss",
+    "Template": "vmss.bicep",
+    "Icon": "vmss.svg",
+    "Label": "vmss",
+    "Prefix": "vmss",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "vnet-link",
+    "Description": "vnet-link",
+    "Template": "vnet-link.bicep",
+    "Icon": "vnet-link.svg",
+    "Label": "vnet-link",
+    "Prefix": "vnet",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  },
+  {
+    "Name": "vnet-switcher",
+    "Description": "vnet-switcher",
+    "Template": "vnet-switcher.bicep",
+    "Icon": "vnet-switcher.svg",
+    "Label": "vnet-switcher",
+    "Prefix": "vnets",
+    "Defaults": {
+      "Dev": {
+        "sku": null
+      }
+    }
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f66ad8d2.css",
+    "main.js": "/static/js/main.7ef16196.js",
+    "static/js/787.84222301.chunk.js": "/static/js/787.84222301.chunk.js",
+    "static/media/privacy.png": "/static/media/privacy.d978285cf1b4ba9d367f.png",
+    "static/media/Large_background.png": "/static/media/Large_background.1296e20ffa235715133f.png",
+    "static/media/Moblie_background.jpg": "/static/media/Moblie_background.bf9918c39e2430f8ae0b.jpg",
+    "static/media/company.jpg": "/static/media/company.aff98949f62bcde1a336.jpg",
+    "static/media/InfraGenie_ai.jpg": "/static/media/InfraGenie_ai.008ef2d1cc8217420f0c.jpg",
+    "static/media/LandingImg.png": "/static/media/LandingImg.b5eb984d9015094ceb73.png",
+    "service-worker.js": "/service-worker.js",
+    "static/media/support.png": "/static/media/support.ee80c5615c994363fd92.png",
+    "static/media/InfraGenie_aiSmall.svg": "/static/media/InfraGenie_aiSmall.512f4d37e6d9a71cd0c7c51e1864d804.svg",
+    "static/media/InfraGenie.svg": "/static/media/InfraGenie.9beb1eb19446557294620481b086492c.svg",
+    "static/media/GeniewithoutBG.png": "/static/media/GeniewithoutBG.5a4fef0475218971ad02.png",
+    "static/media/GenieF.svg": "/static/media/GenieF.6b1c51b2f55a416167d8b32779e38234.svg",
+    "index.html": "/index.html",
+    "main.f66ad8d2.css.map": "/static/css/main.f66ad8d2.css.map",
+    "main.7ef16196.js.map": "/static/js/main.7ef16196.js.map",
+    "787.84222301.chunk.js.map": "/static/js/787.84222301.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f66ad8d2.css",
+    "static/js/main.7ef16196.js"
+  ]
+}

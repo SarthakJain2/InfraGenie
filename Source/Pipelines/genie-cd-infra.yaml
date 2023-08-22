@@ -1,0 +1,37 @@
+trigger: none
+
+pool:
+  vmImage: windows-latest
+
+stages:
+- stage: 'Deploy'
+  jobs:
+  - job: 'DeploymentJob'
+    displayName: Create a deployment pipeline for Infra package
+    steps:
+    
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download Pipeline Artifact'
+      inputs:
+        buildType: specific
+        project: 'efafcb65-a45c-4d5c-a58f-35ec3de2ebb5'
+        definition: 20
+        targetPath: '$(System.DefaultWorkingDirectory)'
+        
+    - pwsh: |
+        Write-Host "$(System.DefaultWorkingDirectory)\drop"
+        Expand-Archive -Path "$(System.DefaultWorkingDirectory)\drop\*.nupkg" -DestinationPath "$(System.DefaultWorkingDirectory)\drop"
+        
+
+    - task: AzureResourceManagerTemplateDeployment@3
+      displayName: 'ARM Template deployment: Resource Group scope'
+      inputs:
+        azureResourceManagerConnection: 'sc-genie-arm-iac-all'
+        subscriptionId: 'ece96d80-c934-4839-bb90-c2f9ff7c94f9'
+        resourceGroupName: testing
+        location: 'East US'
+        csmFile: '$(System.DefaultWorkingDirectory)/drop/Infra/main.json'
+        csmParametersFile: '$(System.DefaultWorkingDirectory)/drop/Infra/main.parameters.json'
+        overrideParameters: '-env dev'
+...
+

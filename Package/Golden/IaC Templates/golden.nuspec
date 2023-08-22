@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>InfraGenie</id>
+    <version>1.0.0</version>
+    <authors>Rhipheus LLC</authors>
+    <license type="file">.\license.txt</license>
+    <projectUrl>https://dev.azure.com/rhipheus/IaC</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Infra Genie Golden templates</description>
+    <releaseNotes>Initial release of the Golden templates.</releaseNotes>
+    <copyright>Copyright © 2023 Rhipheus LLC</copyright>
+    <tags>bicep golden infrastructure nuget package iac</tags>
+  </metadata>
+  <files>
+    <file src="*.bicep" target="iac-templates" />
+    <file src="license.txt" target="" />
+    <file src="*.yaml" target="devops-templates" />
+  </files>
+</package>

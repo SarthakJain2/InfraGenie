@@ -1,0 +1,196 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+  "handler": "Microsoft.Azure.CreateUIDef",
+  "version": "0.1.2-preview",
+  "parameters": {
+    "resourceTypes": ["microsoft.resources/resourcegroups"],
+    "basics": [
+      {
+        "name": "companyncontactdetails",
+        "type": "Microsoft.Common.Section",
+        "label": "Company & Contact Details",
+        "elements": [
+          {
+            "name": "companyName",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Company Name",
+            "toolTip": "Legal company name",
+            "constraints": {
+              "required": true,
+              "regex": "^[A-Za-z ]{1,100}$",
+              "validationMessage": "Please enter a valid company name containing only letters and spaces, up to 100 characters."
+            }
+          },
+          {
+            "name": "Subdomain",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Preferred Subdomain",
+            "toolTip": "Domain name to use when accessing the web URL",
+            "constraints": {
+              "required": true,
+              "regex": "^[a-zA-Z0-9-]{1,50}$",
+              "validationMessage": "Please enter a valid subdomain name. It can only contain letters (a-z, A-Z), numbers (0-9), and hyphens (-), up to 50 characters."
+            }
+          },
+          {
+            "name": "contactName",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Contact Name",
+            "toolTip": "Full Legal Name of the contact person",
+            "constraints": {
+              "required": true,
+              "regex": "^[a-zA-Z ]{1,100}$",
+              "validationMessage": "Please enter a valid contact name containing only letters and spaces, up to 100 characters."
+            }
+          },
+          {
+            "name": "contactEmail",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Contact Email",
+            "toolTip": "Contact email address of the contact person",
+            "constraints": {
+              "required": true,
+              "regex": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+              "validationMessage": "Please enter a valid contact email address."
+            }
+          }
+        ],
+        "visible": true
+      },
+      {
+        "name": "isolatedtype",
+        "type": "Microsoft.Common.Section",
+        "label": "Network Information",
+        "elements": [
+          {
+            "name": "networkingType",
+            "type": "Microsoft.Common.DropDown",
+            "label": "Network type",
+            "defaultValue": "Isolated",
+            "toolTip": "Choose Network Type",
+            "constraints": {
+              "allowedValues": [
+                {
+                  "label": "Isolated",
+                  "value": "isolated"
+                }
+              ],
+              "required": true
+            },
+            "visible": true
+          },
+          {
+            "name": "whitelistedIPs",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Whitelisted IPs",
+            "toolTip": "IPs to whitelist when in Isolated mode (Optional)",
+            "constraints": {
+              "required": false,
+              "regex": "^(\\[(\"(?:\\d{1,3}\\.){3}\\d{1,3}\",?\\s*)*\\])?$",
+              "validationMessage": "Please enter a valid array of IP addresses or leave it empty."
+            }
+          },
+          {
+            "name": "deployJumpBox",
+            "type": "Microsoft.Common.CheckBox",
+            "label": "Jumpbox",
+            "toolTip": "A Windows VM for accessing the Genie resources.",
+            "constraints": {
+              "required": false
+            }
+          },
+          {
+            "name": "username",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Username",
+            "defaultValue": "",
+            "toolTip": "Admin user name for the jumpbox",
+            "constraints": {
+              "required": false,
+              "regex": "^[a-z0-9A-Z]{1,30}$",
+              "validationMessage": "Only alphanumeric characters are allowed, and the value must be 1-30 characters long."
+            },
+            "visible": "[equals(basics('isolatedtype').networkingType, 'isolated')]"
+          },
+          {
+            "name": "password",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Password",
+            "defaultValue": "",
+            "toolTip": "Password for the jumpbox",
+            "constraints": {
+              "required": false,
+              "regex": "^[a-z0-9A-Z]{1,30}$",
+              "validationMessage": "Only alphanumeric characters are allowed, and the value must be 1-30 characters long."
+            },
+            "visible": "[equals(basics('isolatedtype').networkingType, 'isolated')]"
+          }
+        ],
+        "visible": true
+      }
+    ],
+    "steps": [
+		{
+        "name": "managedIdentitySettings",
+        "label": "Managed Identity Settings",
+        "subLabel": {
+          "preValidation": "Configure managed identity settings",
+          "postValidation": "Done"
+        },
+        "bladeTitle": "Managed Identity Settings",
+        "elements": [
+          {
+            "name": "appManagedIdentity",
+            "type": "Microsoft.ManagedIdentity.IdentitySelector",
+            "label": "Managed Identity Configuration",
+            "toolTip": {
+              "systemAssignedIdentity": "Enable system assigned identity to grant the managed application access to additional existing resources.",
+              "userAssignedIdentity": "Add user assigned identities to grant the managed application access to additional existing resources."
+            },
+            "defaultValue": {
+              "systemAssignedIdentity": "OnOnly"
+            },
+            "options": {
+              "hideSystemAssignedIdentity": false,
+              "hideUserAssignedIdentity": true
+            },
+            "visible": true
+          }
+        ]
+      },
+      {
+        "name": "coreTags",
+        "label": "Tags",
+        "elements": [
+          {
+            "name": "tagsByResource",
+            "type": "Microsoft.Common.TagsByResource",
+            "toolTip": "Enter Tags",
+            "resources": [
+              "Multiple Services"
+            ]
+          }
+        ]
+      }
+    ],
+    "outputs": {
+      "env": "prod",
+      "projectName": "genie",
+      "coreStorageAccount": "stshareddev002",
+      "companyName": "[basics('companyncontactdetails').companyName]",
+      "Subdomain": "[basics('companyncontactdetails').Subdomain]",
+      "contactName": "[basics('companyncontactdetails').contactName]",
+      "contactEmail": "[basics('companyncontactdetails').contactEmail]",
+      "networkingType": "[basics('isolatedtype').networkingType]",
+      "deployJumpBox": "[parse(basics('isolatedtype').deployJumpBox)]",
+      "vmSize": "Standard_D2s_v3",
+      "adminUsername": "marketplaceAdmin",
+      "adminPassword": "HelloSpock@123",
+      "uniqueStr": "[uniqueString(newGuid())]",
+      "isPublic": true,
+      "managedIdentity": "[steps('managedIdentitySettings').appManagedIdentity]",
+      "coreTags": "[steps('coreTags').tagsByResource]",
+      "location": "[location()]"
+    }
+  }
+}

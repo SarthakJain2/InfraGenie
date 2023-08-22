@@ -1,0 +1,59 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "env": {
+            "value": "dev"
+        },
+        "location": {
+            "value": "eastus"
+        },
+        "component": {
+            "value": "wnd"
+        },
+        "nameSuffix": {
+            "value": "poc-wnd-dev-001"
+        },
+        "nameSuffixShort": {
+            "value": "poc-dev-001"
+        },
+        "computerName": {
+            "value": "poc-wnd-dev"
+        },
+        "nameOverride": {
+            "value": ""
+        },
+        "vmImagePublisher": {
+            "value": "MicrosoftWindowsServer"
+        },
+        "vmImageOffer": {
+            "value": "WindowsServer"
+        },
+        "vmImageSku": {
+            "value": "2019-datacenter"
+        },
+        "vmSize":{
+            "value": "Standard_D4s_v3"
+        },
+        "adminUsername": {
+            "value": "pocadmin"
+        },
+        "adminPassword": {
+          "value": "HelloSpock@123"
+        },
+        "commandToExecute": {
+            "value": "powershell $PSVersionTable"
+        },
+        "coreTags": {
+            "value": {
+                "created-by": "Vyas Bharghava",
+                "created-on": "8/31/2022",
+                "purpose": "Generic Windows Server",
+                "technical-contact": "Vyas Bhargahva <vyas@rhipheus.com>",
+                "project-name": "poc",
+                "environment": "dev",
+                "billing-contact": "Vyas Bharghava <vyas@rhipheus.com>"
+            }
+        }
+    }
+}

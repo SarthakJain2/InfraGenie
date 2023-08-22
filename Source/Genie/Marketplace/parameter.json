@@ -1,0 +1,11 @@
+{
+  "Organization": "ajaymaile",
+  "PAT": "w67eqcg25k2adnazlwzmxvphvppvj7lmf7pit7rxrksgezg5nxhq",
+  "ProjectName": "sample-test",
+  "ProcessTemplate": "b8a3a935-7e91-48b8-a94c-606d37c3e9f2",
+  "PipelineName": "sample-pipeline",
+  "RepoName": "sample-repo",
+  "BranchName": "sample-branch",
+  "LocalCodeDirectory": "D:\\Ajay\\Vyas\\Infragenie\\Demo\\Files",
+  "YamlPath": "YamlPath"
+}

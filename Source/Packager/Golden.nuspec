@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Rhipheus.InfraGenie.Golden</id>
+    <version>1.0.0</version>
+    <authors>Rhipheus LLC</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>InfraGenie Golden Templates.</description>
+  </metadata>
+  <files> 
+    <file src="..\Golden\**" target="Golden" />
+  </files>
+</package>

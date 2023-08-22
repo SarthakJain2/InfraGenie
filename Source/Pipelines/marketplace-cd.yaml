@@ -1,0 +1,84 @@
+trigger: none
+
+pool:
+  name: Akshay's Laptop
+
+stages:
+- stage: 'Deploy'
+  jobs:
+  - job: 'DeploymentJob'
+    displayName: Create a deployment pipeline for Infra package
+    steps:
+    
+    - task: DownloadPackage@1
+      inputs:
+        packageType: 'nuget'
+        feed: '/100af0af-d05b-42ea-a288-d74c49065583'
+        view: 
+        definition: 'b050ea35-bdb1-48cf-90dd-8108e24240d5'
+        version: '1.0.20230711.2'
+        downloadPath: '$(System.DefaultArtifactsDirectory)'
+    
+    - task: DownloadBuildArtifacts@1
+      inputs:
+        buildType: 'specific'
+        project: 'efafcb65-a45c-4d5c-a58f-35ec3de2ebb5'
+        pipeline: '44'
+        buildVersionToDownload: 'latest'
+        downloadType: 'specific'
+        downloadPath: '$(System.ArtifactsDirectory)'
+        
+    - task: DownloadBuildArtifacts@1
+      inputs:
+        buildType: 'specific'
+        project: 'efafcb65-a45c-4d5c-a58f-35ec3de2ebb5'
+        pipeline: '20'
+        buildVersionToDownload: 'latest'
+        downloadType: 'specific'
+        downloadPath: '$(System.ArtifactsDirectory)'
+    
+    - task: FileTransform@1
+      displayName: 'File Transform: '
+      inputs:
+        folderPath: '$(System.DefaultWorkingDirectory)\_Rhipheus.InfraGenie.Golden\Golden\Scripts\Marketplace'
+        fileType: json
+        targetFiles: 'parameter.json '
+
+    - task: FileTransform@1
+      displayName: 'File Transform: '
+      inputs:
+        folderPath: '$(System.DefaultWorkingDirectory)\_Rhipheus.InfraGenie.Golden\Golden\Scripts\Marketplace'
+        fileType: json
+        targetFiles: 'storage.parameter.json '
+
+    - task: AzurePowerShell@5
+      inputs:
+        azureSubscription: 'sc-genie-arm-iac-all'
+        ScriptType: 'InlineScript'
+        Inline: |
+          write-host "$(System.DefaultWorkingDirectory)\_Rhipheus.InfraGenie.Golden\Golden\Scripts\Marketplace"
+                  
+           .\Storage-UploadFile.ps1
+        azurePowerShellVersion: 'LatestVersion'
+        pwsh: true
+        workingDirectory: '$(System.DefaultWorkingDirectory)\_Rhipheus.InfraGenie.Golden\Golden\Scripts\Marketplace'
+
+    - task: CopyFiles@2
+      displayName: 'Copy Files to: '
+      inputs:
+        SourceFolder: '$(System.ArtifactsDirectory)\_Marketplace-CopyFiles\marketplace'
+        Contents: marketplace.zip
+        TargetFolder: '$(System.DefaultWorkingDirectory)\_Rhipheus.InfraGenie.Golden\Golden\Assets'
+
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: |
+          write-host "$(System.DefaultWorkingDirectory)\_Rhipheus.InfraGenie.Golden\Golden\Scripts\Marketplace"
+                
+           .\Run-Main.ps1
+        failOnStderr: true
+        pwsh: true
+        workingDirectory: '$(System.DefaultWorkingDirectory)\_Rhipheus.InfraGenie.Golden\Golden\Scripts\Marketplace'
+...
+

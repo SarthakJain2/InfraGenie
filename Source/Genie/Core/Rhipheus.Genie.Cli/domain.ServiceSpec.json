@@ -1,0 +1,39 @@
+﻿{
+  "storage": {
+    "defaultAction": "Allow",
+    "isPublic": "false",
+    "runPrereq": "false",
+    "skuName": "Standard_LRS",
+    "kind": "StorageV2",
+    "accessTier": "Hot",
+    "isHnsEnabled": "true",
+    "whitelistedIPs": [ "192.168.1.1", "192.168.1.2" ]
+
+  },
+  "vm.windows": {
+    "nameOverride": "defaultName",
+    "imageReferenceId": "defaultImageId",
+    "vmSize": "Standard_DS1_v2",
+    "computerName": "win-vm",
+    "adminUsername": "AdminUser",
+    "adminPassword": "securePassword123",
+    "commandToExecute": "Initialize-VM.ps1",
+    "fileUris": [ "https://example.com/scripts/Initialize-VM.ps1" ],
+    "vmImageOffer": "WindowsServer",
+    "vmImagePublisher": "MicrosoftWindowsServer",
+    "vmImageSku": "2019-Datacenter"
+  },
+  "application-insight": {
+    "kind": "web",
+    "workspace_sku_Name": "Standard"
+  },
+  "api-management": {
+    "virtualNetworkType": "None",
+    "publisherEmail": "publisher@example.com",
+    "publisherName": "Default Publisher",
+    "skuCount": 1,
+    "identityType": "SystemAssigned",
+    "apimCustomDomainName": "custom-domain.example.com"
+  }
+}
+

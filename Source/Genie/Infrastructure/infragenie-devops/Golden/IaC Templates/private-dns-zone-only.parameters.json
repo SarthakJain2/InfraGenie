@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "dnsZones": {
+      "value": [
+        "azure-api.net",
+                "developer.azure-api.net",
+                "management.azure-api.net",
+                "portal.azure-api.net",
+                "privatelink.adf.azure.com",
+                "privatelink.afs.azure.net",
+                "privatelink.agentsvc.azure-automation.net",
+                "privatelink.api.azureml.ms",
+                "privatelink.azconfig.io",
+                "privatelink.azure-api.net",
+                "privatelink.azure-automation.net",
+                "privatelink.azure-devices.net",
+                "privatelink.azurecr.io",
+                "privatelink.azurehdinsight.net",
+                "privatelink.azuresynapse.net",
+                "privatelink.azurewebsites.net",
+                "privatelink.blob.core.windows.net",
+                "privatelink.cassandra.cosmos.azure.com",
+                "privatelink.centralus.azmk8s.io",
+                "privatelink.centralus.backup.windowsazure.com",
+                "privatelink.centralus.batch.azure.com",
+                "privatelink.cognitiveservices.azure.com",
+                "privatelink.cus.backup.windowsazure.com"
+      ]
+    },
+    "coreTags": {
+      "value": {
+        "created-by": "Vyas Bharghava",
+        "technical-contact": "Vyas Bharghava <vyas@rhipheus.com>",
+        "project-name": "core",
+        "billing-contact": "Vyas Bharghava <vyas@rhipheus.com>",
+        "purpose": "Common Spoke VNET for the Subscription"
+    }
+    }
+  }
+}

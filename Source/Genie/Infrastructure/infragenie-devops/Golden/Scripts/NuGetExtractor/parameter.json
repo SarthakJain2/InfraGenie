@@ -1,0 +1,14 @@
+{
+  "PAT": "w67eqcg25k2adnazlwzmxvphvppvj7lmf7pit7rxrksgezg5nxhq",
+  "Organization": "ajaymaile",
+  "RootFolder": "D:/hello",
+  "outputDir": "D:/hello",
+  "packageName": "MyPackage",
+  "processTemplate": "b8a3a935-7e91-48b8-a94c-606d37c3e9f2",
+  "GitHubRepoUrl": "https://github.com/acemilyalcin/sample-node-project.git",
+  "GitHubRepo1Url": "https://github.com/adamajammary/simple-web-app-mvc-dotnet",
+  "url": "https://pkgs.dev.azure.com/ajaymaile/InfraGeniev22.0/_apis/packaging/feeds/Geniev22.0/nuget/packages/MyPackage/Versions/1.0.0-CI-20230522-033413/content?api-version=7.0-preview.1",
+  "projectName": "InfraGenie",
+  "ProjectType": "Nodejs",
+  "Bicepfile": "storage-account"
+}

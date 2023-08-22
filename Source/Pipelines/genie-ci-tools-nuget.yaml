@@ -1,0 +1,54 @@
+resources:
+  pipelines:
+    - pipeline: genie-ci-tools
+      source: genie-ci-tools
+trigger: none
+
+stages:
+- stage: Build
+
+  jobs:
+  - job: Job_1
+    displayName: creation of tools package
+    pool:
+      name: Azure Pipelines
+    steps:
+    - checkout: self
+      fetchDepth: 1
+    - task: DownloadPipelineArtifact@2
+      inputs:
+        buildType: 'specific'
+        project: 'efafcb65-a45c-4d5c-a58f-35ec3de2ebb5'
+        definition: '30'
+        buildVersionToDownload: 'latest'
+        targetPath: '$(System.DefaultWorkingDirectory)'
+    - task: NuGetToolInstaller@1
+      displayName: 'Use NuGet '
+    - task: PowerShell@2
+      displayName: PowerShell Script
+      inputs:
+        targetType: inline
+        script: Write-Host $(Build.BuildNumber)
+    - task: NuGetCommand@2
+      displayName: NuGet pack
+      inputs:
+        command: pack
+        searchPatternPack: Source/Packager/Tools.nuspec
+        versioningScheme: byPrereleaseNumber
+        basePath: $(System.DefaultWorkingDirectory)
+        arguments: pack ./Source/Packager/Tools.nuspec -Version  "$(major).$(minor).$(release)"
+    - task: NuGetCommand@2
+      inputs:
+        command: 'push'
+        packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+        nuGetFeedType: 'internal'
+        publishVstsFeed: '100af0af-d05b-42ea-a288-d74c49065583'
+    # - task: PublishBuildArtifacts@1
+    #   displayName: 'Publish Artifact: drop'
+    #   enabled: False
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
+...

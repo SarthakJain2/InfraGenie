@@ -1,0 +1,9 @@
+﻿{
+  "component": "shrd",
+  "isPublic": "false",
+  "subnetName": "exampleSubnet",
+  "dnsZoneResourceGroupId": "",
+  "existingNetworkId": "",
+  "requiredDedicatedSubnet": "false",
+  "cider": "24"
+}

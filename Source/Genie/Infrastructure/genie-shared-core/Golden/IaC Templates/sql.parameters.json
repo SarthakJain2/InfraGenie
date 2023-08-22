@@ -1,0 +1,49 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "env": {
+            "value": "dev"
+        },
+        "location": {
+            "value": "eastus"
+        },
+        "component": {
+            "value": "sql"
+        },
+        "nameSuffix": {
+            "value": "erwinaz-sql-dev-001"
+        },
+        "nameSuffixShort": {
+            "value": "erwinaz-dev-001"
+        },
+        "nameOverride": {
+            "value": ""
+        },
+        "adminUsername": {
+            "value": "erwinazadmin"
+        },
+        "adminPassword": {
+            "value": "erwin@123"
+        },
+        "sqlSku": {
+          "value" :{
+            "name": "GP_S_Gen5",
+            "tier": "GeneralPurpose",
+            "family": "Gen5",
+            "capacity": 1
+          }
+        },
+        "coreTags": {
+            "value": {
+                "created-by": "Vyas Bharghava",
+                "created-on": "8/31/2022",
+                "purpose": "SQL Database",
+                "technical-contact": "Vyas Bhargahva <vyas@rhipheus.com>",
+                "project-name": "poc",
+                "environment": "dev",
+                "billing-contact": "Vyas Bharghava <vyas@rhipheus.com>"
+            }
+        }
+    }
+}

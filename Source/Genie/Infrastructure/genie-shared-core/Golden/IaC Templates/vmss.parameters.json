@@ -1,0 +1,54 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "eastus"
+        },
+        "vmssname": {
+            "value": "vmscalezolo"
+        },
+        "sku": {
+            "value": {
+                "name": "Standard_D2s_v3",
+                "capacity": 3,
+                "tier": "Standard"
+            }
+        },
+        "osDisk": {
+            "value": {
+                "createOption": "FromImage",
+                "caching": "ReadOnly",
+                "diskSizeGB": 128,
+                "managedDisk":{
+                  "storageAccountType": "StandardSSD_LRS"
+                }
+            }
+        },
+        "imageReference": {
+            "value": {
+                "publisher": "Canonical",
+                "offer": "UbuntuServer",
+                "sku": "18.04-LTS",
+                "version": "latest"
+            }
+        },
+        "adminUsername": {
+            "value": "vmssadmin"
+        },
+        "adminPassword": {
+            "value": "!@#ehp$5&4#2"
+        },
+        "coreTags": {
+            "value": {
+                "created-by": "Vyas Bharghava",
+                "created-on": "8/31/2022",
+                "purpose": "UbuntuServer Agent VMSS",
+                "technical-contact": "Vyas Bhargahva <vyas@rhipheus.com>",
+                "project-name": "poc",
+                "environment": "dev",
+                "billing-contact": "Vyas Bharghava <vyas@rhipheus.com>"
+            }
+        }
+    }
+}

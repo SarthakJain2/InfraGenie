@@ -1,0 +1,39 @@
+
+
+  {
+    "location": {
+      "value": "westus"
+    },
+
+    "component": {
+      "value": "shrd/db"
+    },
+    "kind": {
+      "value": "kind"
+    },
+    "nameSuffix": {
+      "value": "suffix"
+    },
+    "nameSuffixShort": {
+      "value": "sfx"
+    },
+    "hypenlessNameSuffix": {
+      "value": "hypenfx"
+    },
+    "existingNetworkId": {
+      "value": "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>"
+    },
+    "subnetName": {
+      "value": "exampleSubnet"
+    },
+    "dnsZoneResourceGroupId": {
+      "value": "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>"
+    },
+    "requiredDedicatedSubnet": {
+      "value": "false"
+    },
+    "cider": {
+      "value": "24"
+    }
+  }
+  

@@ -1,0 +1,9 @@
+{
+  "env": "dev",
+  "pricingTier": "Basic",
+  "instanceCount": 1,
+  "environmentVariables": {
+    "Variable1": "Value1",
+    "Variable2": "Value2"
+  }
+}

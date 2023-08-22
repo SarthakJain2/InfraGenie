@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Rhipheus.InfraGenie.Infra</id>
+    <version>0.0.0</version>
+    <authors>Rhipheus LLC</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>InfraGenie Infra Files.</description>
+  </metadata>
+  <files> 
+    <file src="..\Genie\Infrastructure\infragenie-core\**" target="Infra\infragenie-core" />
+    <file src="..\Genie\Infrastructure\infragenie-core\scripts\**" target="Infra\scripts" /> 
+    <file src="..\Genie\Infrastructure\infragenie-core\main.json" target="Infra" />
+    <file src="..\Genie\Infrastructure\infragenie-core\main.parameters.json" target="Infra" />
+    <file src="..\Genie\Marketplace\marketplace.ps1" target="Infra" />
+    <file src="..\Genie\Marketplace\marketplace.bicep" target="Infra" />
+    <!-- <file src="..\Genie\Marketplace\marketplace.json" target="Infra" /> -->
+  </files>
+</package>

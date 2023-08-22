@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Rhipheus.Genie.Cli": {
+      "commandName": "Project"
+    }
+  }
+}

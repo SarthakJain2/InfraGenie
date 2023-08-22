@@ -1,0 +1,13 @@
+{
+    "PAT": "w67eqcg25k2adnazlwzmxvphvppvj7lmf7pit7rxrksgezg5nxhq",
+    "Organization": "ajaymaile",
+    "pipelineName": "Golden Templates",
+    "processTemplate": "b8a3a935-7e91-48b8-a94c-606d37c3e9f2",
+    "branchName": "master",
+    "localCodeDirectory": "D:/InfraGenie-1/Package/Golden/Golden",
+    "yamlFilePath": "D:/InfraGenie-1/Package/Golden/Golden/push_code_job.yml",
+    "path": "push_code_job.yml",
+    "projectName": "InfraGenie140",
+    "feedName": "Genie140"
+}
+

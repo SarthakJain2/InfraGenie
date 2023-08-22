@@ -1,0 +1,10 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- template: genie-ci-golden-nuget.yaml  # Template reference
+...

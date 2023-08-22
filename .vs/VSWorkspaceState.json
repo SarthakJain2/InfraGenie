@@ -1,0 +1,18 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Source",
+    "\\Source\\Genie",
+    "\\Source\\Genie\\Core",
+    "\\Source\\Genie\\Core\\Rhipheus.Genie.Api.Models",
+    "\\Source\\Genie\\Core\\Rhipheus.Genie.Api.Models\\bin",
+    "\\Source\\Genie\\Core\\Rhipheus.Genie.Api.Models\\bin\\Debug",
+    "\\Source\\Genie\\Core\\Rhipheus.Genie.Api.Models\\bin\\Debug\\net7.0",
+    "\\Source\\Genie\\Core\\Rhipheus.Genie.Cli",
+    "\\Source\\Genie\\Core\\Rhipheus.Genie.Cli\\obj",
+    "\\Source\\Genie\\Core\\Rhipheus.Genie.Cli\\obj\\Debug",
+    "\\Source\\Genie\\Core\\Rhipheus.Genie.Cli\\obj\\Debug\\net7.0"
+  ],
+  "SelectedNode": "\\Source\\Genie\\Core\\Rhipheus.Genie.Cli\\Rhipheus.Genie.Cli.csproj",
+  "PreviewInSolutionExplorer": false
+}

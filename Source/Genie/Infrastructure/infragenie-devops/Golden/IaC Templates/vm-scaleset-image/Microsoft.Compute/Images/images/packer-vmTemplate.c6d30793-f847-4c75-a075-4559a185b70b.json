@@ -1,0 +1,61 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/VM_IP.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmName": {
+      "type": "string"
+    },
+    "vmSize": {
+      "type": "string",
+      "defaultValue": "Standard_D8s_v4"
+    },
+    "adminUserName": {
+      "type": "string"
+    },
+    "adminPassword": {
+      "type": "securestring"
+    },
+    "networkInterfaceId": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "name": "[parameters('vmName')]",
+      "type": "Microsoft.Compute/virtualMachines",
+      "location": "eastus",
+      "apiVersion": "2021-11-01",
+      "properties": {
+        "hardwareProfile": {
+          "vmSize": "[parameters('vmSize')]"
+        },
+        "storageProfile": {
+          "osDisk": {
+            "osType": "Windows",
+            "name": "packer-osDisk.c6d30793-f847-4c75-a075-4559a185b70b.vhd",
+            "createOption": "FromImage",
+            "image": {
+              "uri": "https://rgagtvmsssbxeastus001001.blob.core.windows.net/system/Microsoft.Compute/Images/images/packer-osDisk.c6d30793-f847-4c75-a075-4559a185b70b.vhd"
+            },
+            "vhd": {
+              "uri": "https://rgagtvmsssbxeastus001001.blob.core.windows.net/vmcontainer8e18cdc0-fa0d-4051-a72e-bc6cb5b8de58/osDisk.8e18cdc0-fa0d-4051-a72e-bc6cb5b8de58.vhd"
+            },
+            "caching": "ReadWrite"
+          }
+        },
+        "osProfile": {
+          "computerName": "[parameters('vmName')]",
+          "adminUsername": "[parameters('adminUsername')]",
+          "adminPassword": "[parameters('adminPassword')]"
+        },
+        "networkProfile": {"networkInterfaces":[{"id":"[parameters('networkInterfaceId')]"}]},
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": false
+          }
+        },
+        "provisioningState": 0
+      }
+    }
+  ]
+}

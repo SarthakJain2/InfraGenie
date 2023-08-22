@@ -1,0 +1,22 @@
+trigger: none
+jobs:
+- job: Job_1
+  displayName: genie bicep validation
+  pool:
+    vmImage: windows-latest
+  steps:
+  - checkout: self
+    fetchDepth: 1
+  - task: BicepBuild@0
+    displayName: Run Bicep CLI build command
+    inputs:
+      sourceDirectory: Source/Genie/Infrastructure/infragenie-core/*.bicep
+      sourceFile: Source/Genie/Infrastructure/infragenie-core/marketplace.bicep
+      outputProcess: outDir
+      outputDirectory: $(Build.artifactstagingdirectory)
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+    inputs:
+      PathtoPublish: $(Build.artifactstagingdirectory)
+...

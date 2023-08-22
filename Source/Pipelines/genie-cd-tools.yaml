@@ -1,0 +1,47 @@
+resources:
+  pipelines:
+    - pipeline: genie-ci-tools-nuget
+      source: genie-ci-tools-nuget
+      trigger:
+        branches:
+          include:
+            - '*'
+trigger: none
+pool:
+  name: Azure Pipelines
+stages:
+- stage: 'GenieWEBUI'
+  jobs:
+  - job: 'Build'
+    steps:
+    - task: AzureWebAppContainer@1
+      displayName: 'Genie Web Deployment'
+      inputs:
+            azureSubscription: 'sc-genie-arm-infragenie-all'
+            appName: 'app-genie-web-dev-001'
+            containers: 'crgeniedev001.azurecr.io/genie-web:latest'
+    
+
+- stage: 'GenieWEBAPI'
+  jobs:
+  - job: 'Build'
+    steps:
+    - task: AzureWebAppContainer@1
+      displayName: 'Azure Web App on Container Deploy: app-genie-api-dev-001'
+      inputs:
+        azureSubscription: 'sc-genie-arm-infragenie-all'
+        appName: 'app-genie-api-dev-001'
+        containers: 'crgeniedev001.azurecr.io/genie-api:latest'
+    
+
+- stage: 'GenieWEBCLI'
+  jobs:
+  - job: 'Build'
+    steps:
+    - task: AzureWebAppContainer@1
+      displayName: 'Azure Web App on Container Deploy: app-genie-cli-dev-001'
+      inputs:
+        azureSubscription: 'sc-genie-arm-infragenie-all'
+        appName: 'app-genie-cli-dev-001'
+        containers: 'crgeniedev001.azurecr.io/genie-cli:latest'
+...

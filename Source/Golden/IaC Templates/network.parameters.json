@@ -1,0 +1,40 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "eastus"
+        },
+        "nameSuffixShort": {
+            "value": "poc-dev-001"
+        },
+        "vnetAddressPrefixes": {
+            "value": [
+                "10.2.0.0/16"
+            ]
+        },
+        "subnetAddressPrefix": {
+            "value": [
+                {
+                    "name": "primary",
+                    "addressPrefix": "10.2.0.0/17"
+                },
+                {
+                    "name": "secondary",
+                    "addressPrefix": "10.2.128.0/18"
+                }
+            ]
+        },
+        "coreTags": {
+            "value": {
+                "created-by": "Vyas Bharghava",
+                "created-on": "9/7/2022",
+                "purpose": "Generic Network Setup",
+                "technical-contact": "Vyas Bhargahva <vyas@rhiphues.com>",
+                "project-name": "poc",
+                "environment": "dev",
+                "billing-contact": "Vyas Bharghava <vyas@rhipheus.com>"
+            }
+        }
+    }
+}

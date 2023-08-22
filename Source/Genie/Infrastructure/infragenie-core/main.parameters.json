@@ -1,0 +1,136 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "env": {
+      "value": "dev"
+    },
+    "projectName": {
+      "value": "genie"
+    },
+    "coreTags": {
+      "value": {
+        "created-by": "Vyas Bharghava",
+        "purpose": "Infragenie",
+        "env": "dev",
+        "project-name": "genie"
+      }
+    },
+    "vnetAddressPrefixes": {
+      "value": [
+        "10.205.0.0/16"
+      ]
+    },
+    "subnetAddressPrefixes": {
+      "value": [
+        {
+          "name": "primary",
+          "addressPrefix": "10.205.0.0/17"
+        },
+        {
+          "name": "AzureBastionSubnet",
+          "addressPrefix": "10.205.234.0/24",
+          "nsgId": ""
+        },
+        {
+          "name": "AzureCognitiveServicesSubnet",
+          "addressPrefix": "10.205.235.0/24",
+          "serviceEndPoints": [
+            "Microsoft.CognitiveServices"
+          ]
+        },
+        {
+          "name": "AzureFunctionsSubnet",
+          "addressPrefix": "10.205.236.0/24",
+          "serviceEndPoints": [
+            "Microsoft.Web"
+          ]
+        },
+        {
+          "name": "snet-genie-web-prod-001",
+          "addressPrefix": "10.205.243.64/26",
+          "serviceEndPoints": [
+            "Microsoft.Web"
+          ],
+          "delegations": [
+            "Microsoft.Web/serverfarms"
+          ]
+        },
+        {
+          "name": "snet-genie-api-prod-001",
+          "addressPrefix": "10.205.194.0/26",
+          "serviceEndPoints": [
+            "Microsoft.Web"
+          ],
+          "delegations": [
+            "Microsoft.Web/serverfarms"
+          ]
+        },
+        {
+          "name": "snet-genie-cli-prod-001",
+          "addressPrefix": "10.205.195.0/24",
+          "serviceEndPoints": [
+            "Microsoft.Web"
+          ],
+          "delegations": [
+            "Microsoft.Web/serverfarms"
+          ]
+        },
+        {
+          "name": "reserved",
+          "addressPrefix": "10.205.248.0/21"
+        }
+      ]
+    },
+    "existingSubnets": {
+      "value": [
+        "primary",
+        "AzureBastionSubnet",
+        "AzureCognitiveServicesSubnet",
+        "AzureFunctionsSubnet",
+        "snet-genie-web-prod-001",
+        "snet-genie-api-prod-001",
+        "snet-genie-cli-prod-001",
+        "reserved"
+      ]
+    },
+    "dnsZones": {
+      "value": [
+        "privatelink.vaultcore.azure.net",
+        "privatelink.blob.core.windows.net",
+        "privatelink.applicationinsights.azure.com",
+        "privatelink.azurecr.io",
+        "privatelink.azurewebsites.net",
+        "privatelink.cognitiveservices.azure.com"
+      ]
+    },
+    "principalId": {
+      "value": ""
+    },
+    "adminUsername": {
+      "value": "genieAdmin"
+    },
+    "adminPassword": {
+      "value": "Say 'Hello' to Spock~122"
+    },
+    "imageReferenceId": {
+      "value": "/subscriptions/0040c20d-9fbe-42ac-b3f9-f83269a753d1/resourceGroups/rg-core-sbx-eastus-001/providers/Microsoft.Compute/galleries/gal_core_sbx_065/images/gal_def_core_sbx_065/versions/1.0.0"
+    },
+    "galleryVmName": {
+      "value": ""
+    },
+    "galleryVmRG": {
+      "value": ""
+    },
+    "galleryVmType": {
+      "value": "Windows"
+    },
+    "galleryVmSku": {
+      "value": {
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2022-Datacenter",
+        "offer": "WindowsServer"
+      }
+    }
+  }
+}

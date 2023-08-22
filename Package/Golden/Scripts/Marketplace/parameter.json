@@ -1,0 +1,8 @@
+{
+    "name": "InfraGenie",
+    "TenantId": "3ac1585b-156d-4c6e-8ffa-8b8440611f7d",
+    "ClientId": "bc3703b6-e592-4140-aaaf-d166236ed64c",
+    "ClientSecret" : "18.8Q~h_fXnX6jTKmblppds4zsQabfw1gtOmOcpn",
+    "Resource": "https://api.partner.microsoft.com",
+    "moduleName": "Property"
+}

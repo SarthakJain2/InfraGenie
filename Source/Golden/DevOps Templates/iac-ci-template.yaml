@@ -1,0 +1,12 @@
+1. Build Genie Core
+2. Build Golden nuget package
+3. Package Genie Infrastrcutrue
+    (find out what format is needed for Marketplace publication)
+
+4. Execute Marketplace publication
+    publish.ps1
+    Publish offer
+
+
+
+  

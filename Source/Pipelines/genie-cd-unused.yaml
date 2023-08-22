@@ -1,0 +1,12 @@
+env:
+    DEV
+    QA
+    PROD
+    MKT
+
+
+Create a package Genie.InfraGenie.Tools
+Create a package Genie.InfraGenie.Golden
+
+
+

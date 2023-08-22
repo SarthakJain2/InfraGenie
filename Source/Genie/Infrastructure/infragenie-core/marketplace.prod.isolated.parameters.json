@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "env": {
+      "value": "prod"
+    },
+    "coreTags": {
+      "value": {
+        "created-by": "Vyas Bharghava",
+        "purpose": "Infragenie",
+        "env": "prod",
+        "project-name": "genie"
+      }
+    },
+    "projectName": {
+      "value": "genie"
+    },
+    "adminUsername": {
+      "value": "marketplaceAdmin"
+    },
+    "adminPassword": {
+      "value": "HelloSpock@123"
+    },
+    "managedIdentity": {
+      "value": "af41beae-74c0-4397-bd19-281e749d17c1"
+    },
+    "existingNetworkId": {
+      "value": ""
+    },
+    "dnsZoneResourceGroupId": {
+      "value": ""
+    }
+  }
+}
